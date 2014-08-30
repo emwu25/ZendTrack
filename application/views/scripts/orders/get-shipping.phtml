@@ -1,0 +1,50 @@
+<?php 
+	$quotes = $this->quotes;
+	$active_quote = array("type" => "None", "quote" => "0");
+?>
+
+<div class="shipping-wrapper">
+	<div class="shipping-charge-box">
+		
+        <div class="shipping-charge-header">Shipping Charge:</div>
+        <div class="shipping-amount">
+        	 <span>Amount: $</span>
+       		 <input id="shipping-price" type="text" />
+        </div> 
+        <div class="shipping-type">
+        	<span>Type: </span>
+            <select id="shipping-select">
+            	<option value="1">FedEx Ground</option>
+                <option value="2">FedEx Next Day</option>
+                <option value="3">FedEx 2nd Day</option>
+                <option value="4">Freight</option>
+                <option value="5">Free Shipping</option>
+           	</select>
+            
+        </div>
+        <div class="shipping-quote-submit">
+        	<button id="add-quote-button"><span>Add Quote</span></button>
+        </div>
+    </div>
+    
+    <div class="shipping-quotes-box">
+		<div class="shipping-quotes-header">Existing Quotes:</div>
+        	<ul>
+				<?php 
+                    foreach($quotes as $each_quote) {
+                    echo '<li class="quote-row">'.Application_Model_Helper_Shipping::decodeQuote($each_quote["type"]).' - $'. $each_quote["quote"] .'<span id="set-active-quote">Set Active<span>'.$each_quote["id"].'</span></span><span id="remove-quote">Remove<span>'.$each_quote["id"].'</span></span></li>';	
+                    if($each_quote["active"] == 1) 
+						$active_quote = $each_quote;
+					
+					}
+					
+                ?>
+        	</ul>
+    </div>
+    <div class="current-shipping-box">
+    	<div class="current-shipping-header">Current Shipping Method Set:</div>
+        <div class="current-shipping-text"><?php echo Application_Model_Helper_Shipping::decodeQuote($active_quote["type"]) . " - $" . $active_quote["quote"] ?></div> 
+    </div>
+    
+</div>
+

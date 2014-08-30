@@ -1,0 +1,22 @@
+
+<div class="drop-ship-item-wrapper">
+  <div class="drop-shipt-item-box" style="display: block;">
+    <div class="drop-ship-item-header">Choose Drop Ship Items:</div>
+    <?php 
+  foreach($this->items as $item_row) { 
+		echo  '<div class="drop-ship-item">';
+		echo	'<input type="checkbox" value="'.$item_row->id.'" name="drop-ship-check">';
+		echo	'<span>'.$item_row->name.'</span>';
+		echo 	'<div class="drop-ship-item-details">';
+		echo 		'<span>Item Name: </span><input type="text" class="drop-ship-item-name" value="'.$item_row->name.'"/>';
+		echo 		'<span>Item Qty: </span><input size="1" type="text" id="drop-ship-item-qty" value="'.$item_row->qty.'" />'; 
+		echo 		'<span>Vendor : </span><select class="drop-ship-vendor">';
+		echo 			'<option value="1">Numark</option>';
+		echo			'<option value="2">Gemini</option>';
+		echo		'</select>';
+		echo	'</div>';
+		echo  '</div>';
+  }?>
+  	<div class="drop-ship-item drop-ship-button"><button id="submit-drop-ship"><span>Submit Requests</span></button></div>
+  </div>
+</div>

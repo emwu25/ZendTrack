@@ -1,0 +1,48 @@
+<?php $items = $this->items; ?>
+<div class="items-tab-wrapper">
+
+	<div class="items-action-box">
+    	<span>Pick Action:</span>
+        <select id="item-action-select">
+        	<option value="1">Drop Ship</option>
+            <option value="2">No Stock</option>
+            <option value="3">Backorder</option>
+            <option value="4">Remove</option>
+            <option value="7">Reset Status</option>
+        </select>
+        <span id="submit-item-action">Accept</span>
+    </div>
+
+  <div class="items-list-box">
+    <div class="items-list-header-wrapper">
+      <ul>
+      	<li class="items-list-header-item select-all"><input type="checkbox" /></li>
+        <li class="items-list-header-item first name">Name</li>
+        <li class="items-list-header-item price">Price</li>
+        <li class="items-list-header-item qty">Qty</li>
+        <li class="items-list-header-item descr">Description</li>
+        <li class="items-list-header-item status last">Status</li>
+      </ul>
+    </div>
+    
+        <div class="notes-list-content">
+        	<table>
+			<?php foreach($items as $each_row) {
+			$special_class ="";
+			if($each_row["status"] == 4)
+			$special_class = ' removed-item';
+			echo '<tr>';
+			echo '<td class="select-item"><input type="checkbox" id="'.$each_row["id"].'" /></td>';
+			echo '<td class="name'.$special_class.'">' .$each_row["name"]. '</td>';
+			echo '<td class="price'.$special_class.'">' .$each_row["price"]. '</td>';
+			echo '<td class="qty'.$special_class.'">' .$each_row["qty"]. '</td>';
+			echo '<td class="descr'.$special_class.'">' .$each_row["description"]. '</td>';
+			if($each_row["status"] != null) {								
+				echo '<td class="status">' . Application_Model_Helper_Item::decodeStatus($each_row["status"], $each_row["other_item"]) . '</td>'; 
+			}
+			echo '</tr>';
+			} ?>
+            </table>
+        </div>
+  </div>
+</div>

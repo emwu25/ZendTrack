@@ -1,0 +1,51 @@
+<?php 
+	$status_obj = $this->status_obj;
+?>
+
+<div class="status-tab-wrapper"> 
+	<div class="status-list-box">
+    	<div class="status-list-header-wrapper">
+        	<ul>
+            	<li class="status-list-header-item first status">Status</li>
+                <li class="status-list-header-item user">Set By</li>
+                <li class="status-list-header-item last date">Date</li>
+            </ul>
+        </div> 
+        <div class="status-list-content">
+        	<?php foreach($status_obj->status_collection as $each_row) {
+			
+        	echo '<div class="status-row">';
+	    
+
+            echo '   <ul>';
+            echo '     	<li class="status first status-list-row-item">'. Application_Model_Helper_Status::decode($each_row["status"]).'</li>';
+            echo '      <li class="user status-list-row-item">'.$each_row["user"].'</li>';
+            echo '      <li class="date status-list-row-item">'.$each_row["time_set"].'</li>';
+            echo '        </ul>';
+			echo '</div>';
+			} ?>
+        </div>
+    </div>
+    <div class="status-actions-box">
+          <div class="actions-header">Actions:</div>
+              <div class="status-actions-wrapper">
+                  <button class="status-action-button" id="no-match-button" flag="nm"><span>No Match</span></button>
+                  <button class="status-action-button" id="decline-button" flag="dc"><span>Decline</span></button>
+                  <button class="status-action-button" id="charged-button" flag="ch"><span>Charged</span></button>
+                  <button class="status-action-button" id="processed-button" flag="pd"><span>Processed</span></button>
+                  <button class="status-action-button" id="confirmation-button" flag="c"><span>Confirmation</span></button>
+                  <button class="status-action-button" id="confirmed-phone-button" flag="cp"><span>Confirmed (Phone)</span></button>
+                  <button class="status-action-button" id="confirmed-email-button" flag="ce"><span>Confirmed (Email)</span></button>
+                  <button class="status-action-button" id="no-stock-button" flag="ns"><span>No Stock</span></button>
+                  <button class="status-action-button" id="printed-button" flag="pr"><span>Printed</span></button>
+                  <button class="status-action-button" id="canceled-button" flag="ca"><span>Canceled</span></button>
+                  <button class="status-action-button" id="matched-button" flag="ds"><span>Matched</span></button> 
+              </div>
+              <div class="status-email-wrapper">
+              	<div class="status-email-check"><input type="checkbox" id="email-status" checked="checked" />Email Status</div>
+              	<div class="status-sms-check"><input type="checkbox" id="sms-status" checked="checked" />Text Status</div>
+              </div>
+          </div>
+    </div>
+
+</div>

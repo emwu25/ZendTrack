@@ -1,0 +1,33 @@
+<?php 
+	$order = $this->order; 
+?>
+
+
+<div style="background-color: #26BEF0; padding: 30px; font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+  <p style= "color: #FFF;font-size: 12px;">Hello <?php echo $order->name ?>, </p>
+  <p style= "color: #FFF;font-size: 12px;">This is <strong>123dj.com</strong> trying to contact you regarding your current order with us. </p>
+  <p style= "color: #FFF;font-size: 12px;">Order Status:</p>
+  <table width="454" border="1" cellspacing="0">
+    <tr>
+      <td style="color: #FFF;background-color: #0A6989;font-weight: bold;padding: 5px;" width="126">Order Number</td>
+      <td style="color: #FFF;background-color: #0A6989;font-weight: bold;padding: 5px;" width="260">Order Status</td>
+    </tr>
+    <tr>
+      <td style="color: #FFF;padding:5px;background: white;color: #0A6989;font-size: 12px;"><?php echo $order->number ?></td>
+      <td style="color: #C10000;padding:5px;background: white;font-size: 12px; font-weight:bold">Credit card has been declined. Order on hold. *</td>
+    </tr>
+  </table>
+  <p style="font-size: 12px; display: block; width: 600px; color: white; ">* We have tried processing your order with the credit card you provided.  Unfortunately we got a decline message from the bank.  Many times your bank will decline the charge for security reasons or if it is a debit card, there might be a daily limit.  We will hold this order for 15 days.  Please contact us and let us know when we can charge and ship the order.
+  Thank you for placing your order with us.</p>
+  <div style="	background: white;padding: 30px; width: 540px;">
+  	<h4 style="	color: #BF0000;	font-size: 18px;background-color: #FFF;padding: 5px;">Please Note:</h4>
+  	<p>
+  <strong>No emails will be answered regarding this issue. </strong></p>
+  	<p>
+    PLEASE CALL Toll Free: 1-800-856-8397 and ask for processing department in order to resolve this issue. 
+    </p>
+  </div>
+  <p style="color: #FFF;font-size: 12px;">Thank You,</p>
+  <p style="color: #FFF;font-size: 12px;">123dj.com<br />
+  </p>
+</div>

@@ -1,0 +1,17 @@
+<?php $this->headLink()->appendStylesheet('/css/login.css'); echo $this->headLink() ?>
+<div class="page-wrapper">
+	<div class="main-container"> 
+	<h3>123DJ Customer Tracking</h3>
+    <?php 
+	if(!$this->authorized) { 
+	
+		if(!empty($this->message)) 
+		  echo "<p class=\"fail-msg\">" . $this->message . "</p>"; 
+		  echo $this->form; 
+	} else { 
+    	echo '<p class="welcome-msg">Hello '. $this->getIdentity() .'.  You are currently signed in.';
+		echo '<p class="sign-out"><a href="/user/logout/">Log Out</a>'; 
+    } ?>
+    
+    </div>
+</div> 

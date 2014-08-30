@@ -1,0 +1,22 @@
+<?php 
+	$order = new Application_Model_Order();
+	$input = $this->inputString;
+	$method = $this->method;
+	
+	$result = $order->fetch($input,$method,$this->limit, $this->flag);
+	
+   $odd = "odd";	
+   					
+foreach($result as $datarow) {
+	echo "<tr id=\"".$datarow->order_number."\" class=\"".$odd."\">";
+	echo "<td class='number'>" . $datarow->order_number . "</td>";
+	echo "<td class='name'>" . $datarow->last_name . "</td>";
+	echo "<td class='email'>" . strtolower($datarow->cust_email) . "</td>";
+	echo "<td class='phone'>" . $datarow->customer_phone_number . "</td>";
+	echo "<td class='date'>" . substr($datarow->order_placed,0,8) . "</td>";
+  
+	echo "</tr>"; 
+	if($odd == "odd") { $odd = "even"; } else { $odd = "odd"; }
+}
+?>
+

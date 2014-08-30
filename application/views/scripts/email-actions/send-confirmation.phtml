@@ -1,0 +1,56 @@
+<?php 
+	$order = $this->order; 
+?>
+
+
+<div style="background-color: #26BEF0; padding: 30px; font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+  <p style= "color: #FFF;font-size: 12px;">Hello <?php echo $order->name ?>, </p>
+  <p style= "color: #FFF;font-size: 12px;">This is <strong>123dj.com</strong> trying to contact you regarding your current order with us. </p>
+  <p style= "color: #FFF;font-size: 12px;">Order Status:</p>
+  <table width="454" border="1" cellspacing="0">
+    <tr>
+      <td style="color: #FFF;background-color: #0A6989;font-weight: bold;padding: 5px;" width="126">Order Number</td>
+      <td style="color: #FFF;background-color: #0A6989;font-weight: bold;padding: 5px;" width="260">Order Status</td>
+    </tr>
+    <tr>
+      <td style="color: #FFF;padding:5px;background: white;color: #0A6989;font-size: 12px;"><?php echo $order->number ?></td>
+      <td style="color: #C10000;padding:5px;background: white;font-size: 12px; font-weight:bold">Shipping Charge Confirmation Requested. Order on hold. *</td>
+    </tr>
+  </table>
+  <p style="font-size: 12px; display: block; width: 600px; color: white; ">* As noted in the Shopping Cart before you placed your order, "Free Shipping" applies only to items marked "Free Shipping." This only applies to continental USA. We have contacted UPS, and they have calculated that the cost for shipping is in the amout of: 666 . This will only be added upon your approval.
+
+</p>
+  <p style="font-size: 12px; display: block; width: 600px; color: white; ">Please choose one from the following list: (click the button or visit the corresponding link).</p>
+  <ul>
+  <?php
+  		foreach($order->quotes as $quote) {
+			$quote_id = $quote["id"];
+			$hash = $quote_id . md5(SALT);
+			$double = md5($hash);
+			$link = SUPPORT_SERVER.'/customer/confirm-shipping/quote/'.$quote["id"].'/sec/'.$double;
+			echo '<li style="font-size: 12px; display: block; width: 600px; color: white;">' . Application_Model_Helper_Shipping::decodeQuote($quote["type"]) . ': +$'. $quote["amount"] ;
+			echo '<a href="'.$link.'"><button style="margin:15px">Choose shipping</button></a><br><a href="'.$link.'">'.$link.'</a></li>';	
+		}
+   ?>
+   
+    <?php  $order_number = $order->number;
+		   $hash = $order_number . md5(SALT);
+		   $double = md5($hash);
+		   
+		   $link = SUPPORT_SERVER .'/customer/cancel-order/order/'.$order_number.'/sec/'.$double;
+	?>
+   	<li style="font-size: 12px; display: block; width: 600px; color: white; margin-top:40px">If you do not want to pay shipping and would like to cancel the order please click here:
+    <a href="<?php echo $link; ?>"><button style="display:block; margin-top:10px">Cancel</button></a> </li>
+  </ul>
+  <div style="	background: white;padding: 30px; width: 540px;">
+  	<h4 style="	color: #BF0000;	font-size: 18px;background-color: #FFF;padding: 5px;">Please Note:</h4>
+  	<p>
+  <strong>No emails will be answered regarding this issue. </strong></p>
+  	<p>
+    PLEASE CALL Toll Free: 1-800-856-8397 and ask for processing department in order to resolve this issue. 
+    </p>
+  </div>
+  <p style="color: #FFF;font-size: 12px;">Thank You,</p>
+  <p style="color: #FFF;font-size: 12px;">123dj.com<br />
+  </p>
+</div>

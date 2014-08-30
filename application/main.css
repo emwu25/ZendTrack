@@ -1,0 +1,159 @@
+.main-container { 
+background-color:rgb(77,210,255);
+width:1024px;
+height:874px;
+margin: auto; 
+}
+
+.main-wrapper { 
+	padding-top: 40px;
+}
+
+
+.header { 
+height:48px;
+width:914px;
+/* Firefox v3.6+ */
+background-image:-moz-linear-gradient(50% 0% -180deg,rgb(0,191,255) 0%,rgb(0,133,178) 100%); 
+/* safari v4.0+ and by Chrome v3.0+ */
+background-image:-webkit-gradient(linear,50% 0%,45% 0%,color-stop(0, rgb(0,191,255)),color-stop(1, rgb(0,133,178)));
+/* Chrome v10.0+ and by safari nightly build*/
+background-image:-webkit-linear-gradient(-180deg,rgb(0,191,255) 0%,rgb(0,133,178) 100%);
+/* Opera v11.10+ */
+background-image:-o-linear-gradient(-180deg,rgb(0,191,255) 0%,rgb(0,133,178) 100%);
+/* IE v10+ */
+background-image:-ms-linear-gradient(-180deg,rgb(0,191,255) 0%,rgb(0,133,178) 100%);
+background-image:linear-gradient(-180deg,rgb(0,191,255) 0%,rgb(0,133,178) 100%);
+-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0085b2,endColorstr=#ff00bfff,GradientType=1)";
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0085b2,endColorstr=#ff00bfff,GradientType=1);
+/* Firefox v1.0+ */
+-moz-border-radius:10px 10px 0px 0px;
+/* Safari v3.0+ and by Chrome v0.2+ */
+-webkit-border-radius:10px 10px 0px 0px;
+/* Firefox v4.0+ , Safari v5.0+ , Chrome v4.0+ , Opera v10.5+  and by IE v9.0+ */
+border-radius:10px 10px 0px 0px;
+margin: auto;
+}
+
+.menu-links .top-link { 
+display: block; 
+float: left;
+color:rgb(255,255,255);
+font-weight:bold;
+font-size:21px;
+font-family:Arial, Helvetica, sans-serif;
+line-height: 48px;
+padding-left: 15px;
+padding-right: 15px;
+border-right: 1px solid #001A66;
+border-left: 1px solid #99E5FF; 
+}
+
+.menu-links .first { 
+	border-left: none !important;
+}
+
+.menu-links .last { 
+box-shadow: 1px 0 0 0px #99E5FF;
+}
+
+.menu-links { 
+	padding: 0px;
+}
+
+
+.main { 
+	width: 914px;
+	min-height: 500px;
+	background-color: white;
+	margin: auto;
+}
+
+.lookup-section, .order_details_status_wrapper { 
+	width: 90%; 
+	border-bottom: 1px solid #0098CB;
+	padding-bottom: 20px;
+	margin: auto;
+	padding-top: 20px;
+}
+
+.lookup-label { 
+	color:rgb(0,157,210);
+	font-size:21px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.lookup-box { 
+background-color:rgb(240,240,225);
+width:196px;
+height:26px;
+border-color:rgb(0,152,203);
+border-width:1px;
+border-style:solid;
+
+}
+
+.results-wrapper { 
+	width: 90%;
+	margin: auto;
+}
+
+.results-links li{ 
+	display: block;
+	float: left;
+	padding-left:10px;
+	padding-right:10px;
+	background: #004962;
+	color:rgb(255,255,255);
+	font-size:17px;
+	font-family:Arial, Helvetica, sans-serif;
+	height:26px;
+	line-height:26px;
+	border-right: 1px solid white;
+
+}
+
+.results-links { 
+	padding-left: 0px;
+}
+
+.results-links .active { 
+/* Firefox v3.6+ */
+background-image:-moz-linear-gradient(50% 0% -180deg,rgb(100,191,222) 0%,rgb(0,150,200) 100%); 
+/* safari v4.0+ and by Chrome v3.0+ */
+background-image:-webkit-gradient(linear,50% 0%,23% 0%,color-stop(0, rgb(100,191,222)),color-stop(1, rgb(0,150,200)));
+/* Chrome v10.0+ and by safari nightly build*/
+background-image:-webkit-linear-gradient(-180deg,rgb(100,191,222) 0%,rgb(0,150,200) 100%);
+/* Opera v11.10+ */
+background-image:-o-linear-gradient(-180deg,rgb(100,191,222) 0%,rgb(0,150,200) 100%);
+/* IE v10+ */
+background-image:-ms-linear-gradient(-180deg,rgb(100,191,222) 0%,rgb(0,150,200) 100%);
+background-image:linear-gradient(-180deg,rgb(100,191,222) 0%,rgb(0,150,200) 100%);
+-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0096c8,endColorstr=#ff64bfde,GradientType=1)";
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff0096c8,endColorstr=#ff64bfde,GradientType=1);
+}
+
+.results-content { 
+widht: 90%; 
+min-height: 200px;
+border: 1px solid #0098CB;
+clear: both;
+}
+
+.order_details_status_wrapper .order_details { 
+	float: left;
+	color:rgb(0,157,210);
+	font-size:21px;
+	font-family:Arial, Helvetica, sans-serif;
+
+	
+}
+
+.order_details_status_wrapper .order_status { 
+	float: right;
+	color:rgb(0,157,210);
+	font-size:21px;
+	font-family:Arial, Helvetica, sans-serif;
+
+
+}

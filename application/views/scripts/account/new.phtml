@@ -1,0 +1,28 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<?php echo $this->headTitle('LoudBite.com – Account Sign up'); ?>
+</head>
+<body>
+<?php echo $this->render("includes/header.phtml"); ?>
+<h3>Account Sign up</h3>
+<?php //Add Elements
+//Create Username Field.
+$this->form->addElement('text', 'username');
+$usernameElement = $this->form->getElement('username');
+$usernameElement->setLabel('Username:');
+//Create Email Field.
+$this->form->addElement('text', 'email');
+$emailElement = $this->form->getElement('email');
+$emailElement->setLabel('Email:');
+//Create Password Field.
+$this->form->addElement('password', 'password');
+$passwordElement = $this->form->getElement('password');
+$passwordElement->setLabel('Password:');
+$this->form->addElement('submit', 'submit');
+$submitButton = $this->form->getElement('submit');
+$submitButton->setLabel('Create My Account!'); 
+?>
+<?php echo $this->form; ?>
+</body>
+</html>

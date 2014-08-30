@@ -1,0 +1,33 @@
+<?php 
+	$order = $this->order; 
+?>
+
+
+<div style="background-color: #26BEF0; padding: 30px; font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+  <p style= "color: #FFF;font-size: 12px;">Hello <?php echo $order->name ?>, </p>
+  <p style= "color: #FFF;font-size: 12px;">This is <strong>123dj.com</strong> trying to contact you regarding your current order with us. </p>
+  <p style= "color: #FFF;font-size: 12px;">Order Status:</p>
+  <table width="454" border="1" cellspacing="0">
+    <tr>
+      <td style="color: #FFF;background-color: #0A6989;font-weight: bold;padding: 5px;" width="126">Order Number</td>
+      <td style="color: #FFF;background-color: #0A6989;font-weight: bold;padding: 5px;" width="260">Order Status</td>
+    </tr>
+    <tr>
+      <td style="color: #FFF;padding:5px;background: white;color: #0A6989;font-size: 12px;"><?php echo $order->number ?></td>
+      <td style="color: #C10000;padding:5px;background: white;font-size: 12px; font-weight:bold">Order Processed *</td>
+    </tr>
+  </table>
+  <p style="font-size: 12px; display: block; width: 600px; color: white; ">* Your order has been successfully processed. It is now transferred to our warehouse for shipping.  You will be emailed a tracking number once the order ships. Please allow 5 bussiness days for the tracking information to be updated.
+  Thank you for placing your order with us.</p>
+  <div style="	background: white;padding: 30px; width: 540px;">
+  	<h4 style="	color: #BF0000;	font-size: 18px;background-color: #FFF;padding: 5px;">Please Note:</h4>
+  	<p>
+  <strong>Do not respond to this email.</strong></p>
+  	<p>
+    PLEASE CALL Toll Free: 1-800-856-8397 with any additional questions. 
+    </p>
+  </div>
+  <p style="color: #FFF;font-size: 12px;">Thank You,</p>
+  <p style="color: #FFF;font-size: 12px;">123dj.com<br />
+  </p>
+</div>

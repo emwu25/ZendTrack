@@ -1,0 +1,113 @@
+<?php 
+$maps_api_code = "AIzaSyB3O6LzlTkRl1QFgLuU77U86jv7Yp49MYU";
+$order_address = $this->required_data["order"]->address;
+$order_city = $this->required_data["order"]->city;
+$order_state = $this->required_data["order"]->state;
+$order_zip = $this->required_data["order"]->zip;
+
+$order_address = $order_address . " " . $order_city . " " . $order_state . " " . $order_zip;
+
+$ip_latt = $this->required_data["ip_latt"];
+$ip_long = $this->required_data["ip_long"]; 
+
+
+?>
+<script type="text/javascript"> 
+
+  //var lat = <?php //echo $this->required_data["ip_latt"]; ?>;
+  //var ln = <?php //echo $this->required_data["ip_long"]; ?>;
+  var address_set;
+  var ip_coords;
+  var addr_coords; 
+  var map;
+  
+  
+  function initializeCheck() {
+  
+  var lat = <?php echo $ip_latt; ?>;
+  var ln = <?php echo $ip_long; ?>;
+  
+    var geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(lat, ln);
+	var ip_coords = latlng;
+	
+    var mapOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	var marker1 = new google.maps.Marker({
+            map: map,
+            position: latlng,
+			title: "Ip Location"
+        });
+	encodeAddy(ip_coords, map);
+  }
+
+  function codeAddress(ip_coords) {
+	
+	 
+    var temp_addy = "<?php echo $order_address; ?>";
+	
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': temp_addy}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+       	resultLatLng = results[0].geometry.location;
+		//alert(resultLatLng);
+      } else {
+        //alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+	alert(resultLatLng);
+  }
+  
+ function encodeAddy(ip_coords, map) {
+  var call_running = true;
+  var address = "<?php echo $order_address; ?>";
+  var resultLatLng = 1; 
+  
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+  
+	    var resultLatLng = results[0].geometry.location;
+		var marker2 = new google.maps.Marker({
+            map: map,
+            position: resultLatLng,
+			title: "Shipping Location"
+        });
+		var addr_coords = resultLatLng;
+		calculateDistance(ip_coords, addr_coords);
+		//});
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+	  return;
+    });
+  		
+  }
+ 
+ function calculateDistance(ip_coords, addr_coords, ip_addy) { 
+ 	var distance = google.maps.geometry.spherical.computeDistanceBetween(ip_coords, addr_coords);
+	var km_distance = distance / 1000;
+	var mile_distance = km_distance * 0.6214;
+	mile_distance = mile_distance.toFixed(2);
+	jQuery("#address-distance").html(mile_distance);
+	jQuery("#ip-address").html(ip_addy);
+	return;
+ }
+
+
+  
+</script>
+
+<div class="ip-check-wrapper">
+  <div id="map_canvas" ></div>
+  <div class="distance-box">
+	<div class="actions-header">Details:</div>
+    <div class="distance"> <span>Distance between shipping address <?php echo $order_address; ?> and Ip location is: <span id="address-distance"></span> miles.</span> </div>
+  	<div class="distance"><span>Ip address: <?php echo $this->required_data["ip"]; ?></span></div>
+  </div>
+  <div style="clear: both"></div>
+</div>

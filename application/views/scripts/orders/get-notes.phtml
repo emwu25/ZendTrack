@@ -1,0 +1,30 @@
+<?php $notes_obj = $this->notes_obj;?>
+
+<div class="notes-tab-wrapper"> 
+	<div class="notes-list-box">
+    	<div class="notes-list-header-wrapper">
+        	<ul>
+            	<li class="notes-list-header-item first note">Status</li>
+                <li class="notes-list-header-item user">Set By</li>
+                <li class="notes-list-header-item last date">Date</li>
+            </ul>
+        </div> 
+        <?php // var_dump($notes_obj); ?>
+        <div class="notes-list-content">
+        	<table>
+			<?php foreach($notes_obj->notes_collection as $each_row) {
+			echo '<tr>';
+			echo '<td class="note">' .$each_row["note"]. '</td>';
+			echo '<td class="user">' .$each_row["user"]. '</td>';
+			echo '<td class="date">' .$each_row["date"]. '</td>';
+			echo '</tr>';
+			} ?>
+            </table>
+        </div>
+    </div>
+    <div class="note-submit-box">
+    	<div class="note-submit-box-wrapper">
+        	<span class="note-label">New Note:</span><textarea cols="30" rows="1" type="text" id="note-text"  /><button id="note-submit"><span>Add Note</span></button>
+        </div>
+    
+    </div>

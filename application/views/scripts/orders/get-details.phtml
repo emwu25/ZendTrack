@@ -1,0 +1,65 @@
+
+<div class="summary-wrapper">
+	<div class="customer-info-box">
+    	<div class="row">
+    		<span class="col1">Number: </span><span class="col2"><?php echo $this->order->number; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">Name: </span><span class="col2"><?php echo $this->order->name; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">Address: </span><span class="col2"><?php echo $this->order->address; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">City: </span><span class="col2"><?php echo $this->order->city; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">State: </span><span class="col2"><?php echo $this->order->state; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">Zip: </span><span class="col2"><?php echo $this->order->zip; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">Phone: </span><span class="col2"><?php echo $this->order->phone; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">Email: </span><span class="col2"><?php echo $this->order->email; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">Date: </span><span class="col2"><?php echo $this->order->date; ?></span>
+    	</div>
+    	<div class="row">
+    		<span class="col1">Type: </span><span class="col2"><?php echo Application_Model_Helper_Order::decodeType($this->order->type); ?></span>
+    	</div>        
+    </div>
+    
+    <div class="summary-items-box">
+    	<div class="items-header">Items:</div>
+        <?php 
+			foreach ($this->items as $key => $value) {
+				if($key == 3) { 
+					echo '<div class="more-items each-item"><span>more...</span></div>';
+					break;
+				}
+				if(!(strlen($value->name) < 25)) { 
+					$product = substr($value->name, 0, 25);
+					$product = $product . "...";
+				} else { 
+					$product = $value->name;
+				}
+				echo '<div class="each-item"><span class="name">' . $product . '</span><span class="qty">' . $value->qty. '</span><span class="price">$'. $value->price .'</span></div>';
+			}
+		?>
+        
+    </div>
+    
+    <div class="summary-actions-box">
+    	<div class="actions-header">Quick Actions:</div>
+        <div class="quick-actions-wrapper">
+        	<button class="quick-action-button" id="no-match-button" flag="nm"><span>No Match</span></button>
+            <button class="quick-action-button" id="decline-button" flag="dc"><span>Decline</span></button>
+            <button class="quick-action-button" id="charged-button" flag="ch"><span>Charged</span></button>
+            <button class="quick-action-button" id="processed-button" flag="pd"><span>Processed</span></button>
+        </div>
+    </div>
+</div>

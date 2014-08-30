@@ -1,0 +1,43 @@
+
+<div class="add-item-wrapper">
+	<div class="add-item-box">
+		
+        <div class="add-item-header">Add Item:</div>
+        <div class="item-name">
+        	 <span>Item Name: </span>
+       		 <input id="item-name" type="text">
+        </div> 
+        <div class="item-price">
+        	 <span>Item price: $</span>
+       		 <input id="item-price" type="text">
+        </div>
+        <div class="item-qty">
+        	 <span>Item qty: </span>
+       		 <input id="item-qty" type="text">
+        </div>          
+        
+        <div class="item-type">
+        	<span>Type: </span>
+            <select id="item-type-select">
+            	<option value="0">New Item</option>
+                <option value="1">Replace No Stock Item</option>
+           	</select>
+            
+        </div>
+        <div class="new-item-submit">
+        	<button id="add-item-button"><span>Add Item</span></button>
+        </div>
+    </div> 
+    
+    <div class="replace-item-box"> 
+    	<div class="add-item-header">Replace the following item:</div>
+        <?php 
+		foreach($this->items as $each_item) {
+			if($each_item->status == 2) {
+				echo '<div class="replaced-item"> <input type="radio" name="replaced" id="to-be-replaced-item" value="'.$each_item->id.'" /><span>'. $each_item->name . '</span></div>';
+			}
+		}
+		?>
+    </div>  
+</div>
+

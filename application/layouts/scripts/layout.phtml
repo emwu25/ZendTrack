@@ -1,0 +1,148 @@
+<?php 
+$this->headLink()->appendStylesheet('/css/main.css');
+$this->headScript()->appendFile('//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
+$this->headScript()->appendFile('');
+$this->headScript()->appendFile('/scripts/orders.js');
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8');
+echo $this->headMeta();
+echo $this->headLink(); 
+echo $this->headScript();?>
+
+<?php 
+
+	$result = $this->result;
+	
+?>
+
+<div class="page-container">
+  <div class="main-container">
+    <div class="main-wrapper">
+      <div class="header">
+        <ul class="menu-links">
+          <li class="top-link first">Orders</li>
+          <li class="top-link">Customers</li>
+          <li class="top-link last">Returns</li>
+        </ul>
+      </div>
+      <div class="main">
+      	
+        <div class="lookup-section">
+        	<div class="lookup-field">
+        		<span class="lookup-label">Lookup: </span> <input type="text" name="order-lookup" id="order-lookup-box" class="lookup-box"/>
+        	</div>
+            <div class="lookup-method">
+            	<span class="lookup-label">Method: </span> 
+                <select name="lookup-method" id="lookup-meth" class="lookup-box">
+              		<option selected="selected" value="phone">Phone Number</option>
+                    <option value="number">Order Number</option>
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                </select>
+            </div>
+            <div class="lookup-limit">
+            	<span class="lookup-label">Max Records: </span> 
+                <select name="lookup-limit" id="lookup-lim" class="lookup-box">
+              		<option selected="selected">100</option>
+                    <option>200</option>
+                    <option>500</option>
+                    <option>1000</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="results-wrapper">
+        	<div class="results-menu">
+            	<ul class="results-links">
+                	<li class="results-link active first" id="allorders-link">All Orders</li>
+                    <li class="results-link">Recent</li>
+                    <li class="results-link">Today</li>
+                    <li class="results-link" id="nomatch-link">No Matches</li>
+                    <li class="results-link" id="decline-link">Declines</li>
+                    <li class="results-link last" id="confirmations-link">Confirmations</li> 
+                </ul>
+            </div>
+            <div class="results-content">
+            	<div class="all-orders-result">
+                  <div class="table-container">
+                    <table class="orders-table">
+                      <thead class="table-header">
+                      <tr class="header">
+                          <td class="number">Order Number</td>
+                          <td class="name">Name</td>
+                          <td class="email">Email</td>
+                          <td class="phone">Phone</td>
+                          <td class="date">Date</td>
+             
+                      </tr>
+                      </thead>
+                      <tbody class="table-body">
+                          <?php $odd = "odd";						
+                          foreach($result as $datarow) {
+							  echo "<tr id=\"".$datarow->order_number."\" class=\"".$odd."\">";
+                              echo "<td class='number'>" . $datarow->order_number . "</td>";
+                              echo "<td class='name'>" . $datarow->last_name . "</td>";
+                              echo "<td class='email'>" . strtolower($datarow->cust_email) . "</td>";
+                              echo "<td class='phone'>" . $datarow->customer_phone_number . "</td>";
+                              echo "<td class='date'>" . substr($datarow->order_placed,0,8) . "</td>";
+                            
+                              echo "</tr>"; 
+							  if($odd == "odd") { $odd = "even"; } else { $odd = "odd"; }
+                          }
+                          ?>
+                     </tbody>  
+                    </table>
+                  </div>
+                </div> 
+            </div>
+        </div>
+        
+        <div class="order_details_status_wrapper"> 
+        	<div class="order_details">
+            	<span class="order_details_label">Order Details: </span><span class="order_details_order_number">12345</span>
+            </div>
+            <div class="order_status">
+            	<span class="order_details_label">Order Status: </span><span class="order_details_order_status">Processed</span>
+            </div>
+            <div class="clear"></div> 
+        </div>
+        
+        <div class="detail-wrapper">
+        	<ul class="detail-menu">
+            	<li class="first" id="summary-menu-item">Summary</li>
+                <li id="actions-menu-item">Actions
+                	<div class="sub-menu">
+                    	<span id="email-actions-menu-item">Email Actions</span>
+                    	<span>Processing Actions</span>
+                        <span>Routing Actions</span>
+                    </div>
+                    
+                </li>
+                <li>Customer</li>
+                <li id="items-menu-item">Items
+                	<div class="sub-menu">
+                    	<span id="all-items-menu-item">All Items</span>
+                        <span id="add-item-menu-item">Add Item</span>
+                        <span id="drop-ship-item-menu-item">Drop Ship</span>
+                    </div>
+                </li>
+                <li id="status-menu-item">Status</li>
+                <li id="notes-menu-item">Notes</li>
+                <li id="shipping-menu-item">Shipping</li>
+                <li id="fraud-menu-item" class="last">Fraud
+                	<div class="sub-menu">
+                    	<span id="ip-chech-menu-item">Ip Check</span>
+                        <span id="been-ver-menu-item">Been Verified</span>
+                    </div>
+            	</li>
+            </ul>
+            <div class="detail-content">
+            	
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<?php echo $this->layout()->content; ?> 
+
